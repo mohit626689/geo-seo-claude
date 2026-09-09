@@ -57,4 +57,4 @@ python brand_config.py brand.json    # prints the merged brand dict
 ## Credit
 
 Contributed as a thank-you by Millisa Nwokolo (La Crown Inc.), built on top of the
-GEO-SEO Claude engine by Zubair Trabzada. MIT licensed.
+GEO-SEO Claude engine by Open Source Community. MIT licensed.

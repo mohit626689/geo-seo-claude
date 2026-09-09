@@ -36,7 +36,7 @@ Verify the installation exists by checking for `~/.claude/skills/geo/SKILL.md`. 
 
 ```bash
 TEMP_DIR=$(mktemp -d)
-git clone --depth 1 https://github.com/zubair-trabzada/geo-seo-claude.git "$TEMP_DIR/repo"
+git clone --depth 1 https://github.com/mohit626689/geo-seo-claude.git "$TEMP_DIR/repo"
 ```
 
 If the clone fails, report the error and stop. Do not modify any installed files.

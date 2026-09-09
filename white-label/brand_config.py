@@ -18,7 +18,7 @@ Any field a config omits keeps its default, so a reseller can override as little
 as a single color. Keys beginning with "_" (e.g. "_comment") are ignored.
 
 Contributed by Millisa Nwokolo (La Crown Inc.) as a thank-you, built on top of
-the GEO-SEO Claude engine by Zubair Trabzada. MIT licensed.
+the GEO-SEO Claude engine by Open Source Community. MIT licensed.
 """
 
 import json

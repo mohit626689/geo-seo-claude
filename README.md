@@ -15,7 +15,7 @@
 
 ## Star History
 
-<a href="https://www.star-history.com/#zubair-trabzada/geo-seo-claude&Date">
+<a href="https://www.star-history.com/#mohit626689/geo-seo-claude&Date">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/star-history-dark.svg">
     <img alt="Star History Chart" src="assets/star-history.svg">
@@ -42,13 +42,13 @@
 ### One-Command Install (macOS/Linux)
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/zubair-trabzada/geo-seo-claude/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/mohit626689/geo-seo-claude/main/install.sh | bash
 ```
 
 ### Manual Install
 
 ```bash
-git clone https://github.com/zubair-trabzada/geo-seo-claude.git
+git clone https://github.com/mohit626689/geo-seo-claude.git
 cd geo-seo-claude
 ./install.sh
 ```
@@ -59,10 +59,10 @@ Requires [Git for Windows](https://git-scm.com/downloads) which includes Git Bas
 
 ```bash
 # Option 1: One-command install (run from Git Bash, not PowerShell/CMD)
-curl -fsSL https://raw.githubusercontent.com/zubair-trabzada/geo-seo-claude/main/install-win.sh | bash
+curl -fsSL https://raw.githubusercontent.com/mohit626689/geo-seo-claude/main/install-win.sh | bash
 
 # Option 2: Manual install
-git clone https://github.com/zubair-trabzada/geo-seo-claude.git
+git clone https://github.com/mohit626689/geo-seo-claude.git
 cd geo-seo-claude
 ./install-win.sh
 ```

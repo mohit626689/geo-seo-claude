@@ -14,7 +14,7 @@ import os
 import sys
 import urllib.request
 
-REPO = os.environ.get("STAR_REPO", "zubair-trabzada/geo-seo-claude")
+REPO = os.environ.get("STAR_REPO", "mohit626689/geo-seo-claude")
 TOKEN = os.environ.get("GITHUB_TOKEN", "")
 OUT_DIR = os.path.join(os.path.dirname(__file__), "..", "..", "assets")
 PER_PAGE = 100
