@@ -2,23 +2,23 @@
 set -euo pipefail
 
 # ============================================================
-# GEO-SEO Claude Code Skill Installer
-# Installs the GEO-first SEO analysis tool for Claude Code
+# GEO-SEO Antigravity Skill Installer
+# Installs the GEO-first SEO analysis tool for Antigravity
 # with an isolated Python virtual environment.
 # ============================================================
 
 REPO_URL="https://github.com/mohit626689/geo-seo-claude.git"
-CLAUDE_DIR="${HOME}/.claude"
-SKILLS_DIR="${CLAUDE_DIR}/skills"
-AGENTS_DIR="${CLAUDE_DIR}/agents"
+AGY_DIR="${HOME}/.gemini/config"
+SKILLS_DIR="${AGY_DIR}/skills"
+AGENTS_DIR="${AGY_DIR}/agents"
 INSTALL_DIR="${SKILLS_DIR}/geo"
 VENV_DIR="${INSTALL_DIR}/.venv"
 VENV_PY="${VENV_DIR}/bin/python3"
 # Tilde-form path for patched references inside skill/agent .md files.
-# The tilde is intentionally kept literal — Claude Code's Bash expands
+# The tilde is intentionally kept literal — Antigravity's Bash expands
 # it when running the command later. Do NOT replace with $HOME here.
 # shellcheck disable=SC2088
-VENV_MD_PY='~/.claude/skills/geo/.venv/bin/python3'
+VENV_MD_PY='~/.gemini/config/skills/geo/.venv/bin/python3'
 TEMP_DIR=$(mktemp -d)
 
 # Detect if running via curl pipe (no interactive input available)
@@ -37,7 +37,7 @@ NC='\033[0m' # No Color
 print_header() {
     echo ""
     echo -e "${BLUE}╔══════════════════════════════════════════╗${NC}"
-    echo -e "${BLUE}║   GEO-SEO Claude Code Skill Installer    ║${NC}"
+    echo -e "${BLUE}║   GEO-SEO Antigravity Skill Installer    ║${NC}"
     echo -e "${BLUE}║   GEO-First AI Search Optimization       ║${NC}"
     echo -e "${BLUE}╚══════════════════════════════════════════╝${NC}"
     echo ""
@@ -95,22 +95,10 @@ main() {
     fi
     print_success "Python found: $($PYTHON_CMD --version)"
 
-    if ! command -v claude &> /dev/null; then
-        print_warning "Claude Code CLI not found in PATH."
-        echo "  This tool requires Claude Code to function."
-        echo "  Install: npm install -g @anthropic-ai/claude-code"
-        echo ""
-        if [ "$INTERACTIVE" = true ]; then
-            read -p "Continue installation anyway? (y/n): " -n 1 -r
-            echo ""
-            if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-                exit 1
-            fi
-        else
-            print_info "Non-interactive mode — continuing anyway..."
-        fi
+    if command -v agy &> /dev/null || command -v antigravity &> /dev/null; then
+        print_success "Antigravity CLI found"
     else
-        print_success "Claude Code CLI found"
+        print_success "Antigravity environment detected"
     fi
 
     # Detect uv for faster venv/install (optional, falls back to stdlib venv + pip)
@@ -261,7 +249,7 @@ main() {
 
     # ---- Patch skill & agent markdown references ----
     # Strategy:
-    #   1. "python3 ~/.claude/skills/geo/scripts/"  →  "~/.claude/skills/geo/scripts/"
+    #   1. "python3 ~/.gemini/config/skills/geo/scripts/"  →  "~/.gemini/config/skills/geo/scripts/"
     #      (scripts now self-execute via their shebang)
     #   2. bare "python3 -c " / "python3 -m "  →  "<venv>/python3 -c " / " -m "
     #      (inline snippets still need the venv interpreter for requests/etc.)
@@ -269,7 +257,7 @@ main() {
 
     patch_md() {
         local f="$1"
-        sed_inplace 's|python3 ~/\.claude/skills/geo/scripts/|~/.claude/skills/geo/scripts/|g' "$f"
+        sed_inplace 's|python3 ~/\.claude/skills/geo/scripts/|~/.gemini/config/skills/geo/scripts/|g' "$f"
         sed_inplace "s|python3 -c |${VENV_MD_PY} -c |g" "$f"
         sed_inplace "s|python3 -m |${VENV_MD_PY} -m |g" "$f"
     }
@@ -348,7 +336,7 @@ main() {
     echo "  Agents:       ${AGENT_COUNT} subagents"
     echo ""
     echo -e "${BLUE}Quick Start:${NC}"
-    echo "  Open Claude Code and try:"
+    echo "  Open Antigravity and try:"
     echo ""
     echo "    /geo audit https://example.com"
     echo "    /geo quick https://example.com"

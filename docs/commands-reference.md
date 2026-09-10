@@ -1,6 +1,6 @@
 # Commands Reference
 
-This file documents every command in the `geo-seo-claude` skill bundle. Commands are invoked inside Claude Code using the `/geo` prefix. The main skill at `geo/SKILL.md` acts as a router: it reads the first argument after `/geo` and delegates to the matching sub-skill under `skills/`. All commands accept a URL as their primary argument; CRM commands operate on domain names or prospect IDs instead. Every command that produces a score references the weighting model described in [scoring-methodology.md](scoring-methodology.md). The parallel subagent architecture used by `/geo audit` is described in [architecture.md](architecture.md).
+This file documents every command in the `geo-seo-claude` skill bundle. Commands are invoked inside Antigravity using the `/geo` prefix. The main skill at `geo/SKILL.md` acts as a router: it reads the first argument after `/geo` and delegates to the matching sub-skill under `skills/`. All commands accept a URL as their primary argument; CRM commands operate on domain names or prospect IDs instead. Every command that produces a score references the weighting model described in [scoring-methodology.md](scoring-methodology.md). The parallel subagent architecture used by `/geo audit` is described in [architecture.md](architecture.md).
 
 ---
 
@@ -432,7 +432,7 @@ Converts GEO audit data into a professionally formatted PDF with charts, score g
 - Checks the working directory for existing `GEO-CLIENT-REPORT.md` or `GEO-AUDIT-REPORT.md`; if none are found, runs a full audit first.
 - Parses the Markdown report to extract scores, platform readiness numbers, crawler status, findings, and action items.
 - Assembles the data into the JSON schema expected by the PDF generation script.
-- Calls `python3 ~/.claude/skills/geo/scripts/generate_pdf_report.py` (requires `pip install reportlab`).
+- Calls `python3 ~/.gemini/config/skills/geo/scripts/generate_pdf_report.py` (requires `pip install reportlab`).
 - The PDF uses US Letter size with a navy/blue/coral color palette; score gauges use traffic-light colors (green 80+, blue 60–79, yellow 40–59, red below 40).
 
 **Inputs**

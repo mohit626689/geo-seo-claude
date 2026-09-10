@@ -1,6 +1,6 @@
-# GEO-SEO Claude Code Skill — Documentation
+# GEO-SEO Antigravity Skill — Documentation
 
-`geo-seo-claude` is a Claude Code skill bundle that runs GEO (Generative Engine Optimization) and SEO audits against a website. It orchestrates 13 sub-skills, 5 parallel subagents, and a set of Python utilities to produce a composite GEO Score (0–100) and a prioritized action plan.
+`geo-seo-claude` is a Antigravity skill bundle that runs GEO (Generative Engine Optimization) and SEO audits against a website. It orchestrates 13 sub-skills, 5 parallel subagents, and a set of Python utilities to produce a composite GEO Score (0–100) and a prioritized action plan.
 
 If you are new here, start with **Getting Started**. If you are contributing, skim **Architecture** and **Skills & Agents** first.
 

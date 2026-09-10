@@ -2,7 +2,7 @@
 name: geo-report-pdf
 description: Generate a professional PDF report from a GEO audit using pandoc + Chrome headless. Converts GEO-AUDIT-REPORT.md into a styled, client-ready PDF with a cover page, color-coded score tables, severity-tagged findings, and a 90-day roadmap.
 version: 2.0.0
-author: geo-seo-claude
+author: geo-seo-antigravity
 tags: [geo, pdf, report, client-deliverable, professional]
 allowed-tools: Read, Grep, Glob, Bash, Write
 ---
@@ -23,7 +23,7 @@ No Python dependencies. No ReportLab. No JSON data wrangling.
 3. Run `pandoc` with the bundled CSS + HTML template to produce a self-contained `GEO-REPORT.html`
 4. Run Chrome headless to print the HTML to `GEO-REPORT.pdf`
 
-The pandoc template (`~/.claude/skills/geo/templates/geo-report-template.html`) injects:
+The pandoc template (`~/.gemini/config/skills/geo/templates/geo-report-template.html`) injects:
 - A full-bleed dark navy cover section with the GEO score badge
 - Per-section cover metadata (date, business type, locations, platform)
 - JavaScript that runs inside Chrome before printing to color-code score cells and severity-tag finding sections
@@ -56,8 +56,8 @@ pandoc GEO-AUDIT-REPORT.md \
   --to html5 \
   --standalone \
   --embed-resources \
-  --template ~/.claude/skills/geo/templates/geo-report-template.html \
-  --css ~/.claude/skills/geo/templates/geo-report-style.css \
+  --template ~/.gemini/config/skills/geo/templates/geo-report-template.html \
+  --css ~/.gemini/config/skills/geo/templates/geo-report-style.css \
   --metadata title="GEO Audit Report — <brand_name>" \
   --metadata brand_name="<brand_name>" \
   --metadata domain="<domain>" \
@@ -104,8 +104,8 @@ Tell the user:
 
 ## Customizing the Report
 
-- **Colors / typography** — Edit `~/.claude/skills/geo/templates/geo-report-style.css`
-- **Cover layout** — Edit `~/.claude/skills/geo/templates/geo-report-template.html`
+- **Colors / typography** — Edit `~/.gemini/config/skills/geo/templates/geo-report-style.css`
+- **Cover layout** — Edit `~/.gemini/config/skills/geo/templates/geo-report-template.html`
 - **Score thresholds for color-coding** — Edit the `scoreColor()` function in the template's `<script>` block
 - **Which sections get page breaks** — Edit the `breakBefore` array in the template's `<script>` block
 

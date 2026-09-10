@@ -2,7 +2,7 @@
 name: geo-report
 description: Generate a professional, client-facing GEO report combining all audit results into a single deliverable with scores, findings, and prioritized actions
 version: 1.0.0
-author: geo-seo-claude
+author: geo-seo-antigravity
 tags: [geo, report, client-deliverable, executive-summary, action-plan]
 allowed-tools: Read, Grep, Glob, Bash, WebFetch, Write
 ---

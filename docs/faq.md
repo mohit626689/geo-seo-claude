@@ -10,7 +10,7 @@ SEO (Search Engine Optimization) targets ranking in traditional search engines l
 
 ### Is this a paid tool or service?
 
-The tool itself is free and MIT-licensed. It runs entirely within your own Claude Code session using your existing Anthropic subscription. There is no separate API key, usage meter, or subscription for the skill bundle itself.
+The tool itself is free and MIT-licensed. It runs entirely within your own Antigravity session using your existing Anthropic subscription. There is no separate API key, usage meter, or subscription for the skill bundle itself.
 
 ### Who is this for?
 
@@ -24,9 +24,9 @@ No. It complements existing tools. The `/geo technical` command covers technical
 
 ## Installation & Setup
 
-### Why do I need Claude Code CLI?
+### Why do I need Antigravity CLI?
 
-The skill bundle is implemented as Claude Code slash commands. All commands (`/geo audit`, `/geo quick`, etc.) are routed through Claude Code's skill and agent system. The CLI is the runtime; without it, there is nothing to execute the skill files. Install it with `npm install -g @anthropic-ai/claude-code`.
+The skill bundle is implemented as Antigravity slash commands. All commands (`/geo audit`, `/geo quick`, etc.) are routed through Antigravity's skill and agent system. The CLI is the runtime; without it, there is nothing to execute the skill files. Install it with `npm install -g @anthropic-ai/antigravity`.
 
 ### Can I run this on Windows without WSL?
 
@@ -34,7 +34,7 @@ Yes, but you must use Git Bash, not PowerShell or Command Prompt. The Windows in
 
 ### What does `install.sh` actually do?
 
-It checks for Git, Python 3.8+, and Claude Code CLI, then copies files into your Claude configuration directory (`~/.claude/`). Specifically: the main skill goes to `~/.claude/skills/geo/`, each of the 13 sub-skills goes to `~/.claude/skills/geo-<name>/`, and the 5 agent files go to `~/.claude/agents/`. It then installs Python dependencies from `requirements.txt` using `pip install --user`. If you run it interactively, it also offers to install the Playwright Chromium browser for screenshot support. The installer works both from a cloned local directory and via a `curl | bash` pipe from the repository URL.
+It checks for Git, Python 3.8+, and Antigravity CLI, then copies files into your Claude configuration directory (`~/.gemini/config/`). Specifically: the main skill goes to `~/.gemini/config/skills/geo/`, each of the 13 sub-skills goes to `~/.gemini/config/skills/geo-<name>/`, and the 5 agent files go to `~/.gemini/config/agents/`. It then installs Python dependencies from `requirements.txt` using `pip install --user`. If you run it interactively, it also offers to install the Playwright Chromium browser for screenshot support. The installer works both from a cloned local directory and via a `curl | bash` pipe from the repository URL.
 
 ### Do I need Playwright?
 
@@ -54,11 +54,11 @@ The score (0-100) is a weighted aggregate across six categories: AI Citability &
 
 ### How do the parallel subagents work?
 
-During a full audit, five subagents run simultaneously after the initial discovery phase: `geo-ai-visibility`, `geo-platform-analysis`, `geo-technical`, `geo-content`, and `geo-schema`. Each maps to an agent definition file in `~/.claude/agents/` and is responsible for a distinct slice of the analysis. Claude Code's agent system handles the parallel dispatch; the orchestrator then collects all five reports and synthesizes the composite score. See [architecture.md](architecture.md) for the full flow.
+During a full audit, five subagents run simultaneously after the initial discovery phase: `geo-ai-visibility`, `geo-platform-analysis`, `geo-technical`, `geo-content`, and `geo-schema`. Each maps to an agent definition file in `~/.gemini/config/agents/` and is responsible for a distinct slice of the analysis. Antigravity's agent system handles the parallel dispatch; the orchestrator then collects all five reports and synthesizes the composite score. See [architecture.md](architecture.md) for the full flow.
 
 ### Where is prospect, proposal, and report data stored?
 
-Data from `/geo prospect`, `/geo proposal`, and `/geo compare` is written to `~/.geo-prospects/` outside the Claude Code directory. The structure is:
+Data from `/geo prospect`, `/geo proposal`, and `/geo compare` is written to `~/.geo-prospects/` outside the Antigravity directory. The structure is:
 
 ```
 ~/.geo-prospects/
@@ -79,7 +79,7 @@ Create a new directory under `skills/` following the naming pattern `geo-<skill-
 
 ### How do I test my changes before opening a PR?
 
-Run `./install.sh` from your local clone — the script detects a local `geo/SKILL.md` and installs from the working directory rather than cloning from GitHub. Open Claude Code and exercise the affected commands against a real URL. Verify that all status checks pass before submitting your pull request, as noted in `CONTRIBUTING.md`.
+Run `./install.sh` from your local clone — the script detects a local `geo/SKILL.md` and installs from the working directory rather than cloning from GitHub. Open Antigravity and exercise the affected commands against a real URL. Verify that all status checks pass before submitting your pull request, as noted in `CONTRIBUTING.md`.
 
 ### Where do I report bugs or request features?
 
@@ -95,4 +95,4 @@ No. The tool audits signals that correlate with AI visibility and provides recom
 
 ### Does it submit anything to third-party services?
 
-The skill uses `WebFetch` and `Bash` (via `curl`) to fetch the URLs you provide, and the brand mention scanner checks publicly accessible platforms (YouTube, Reddit, Wikipedia, LinkedIn, and others) for brand signals. No audit data is sent to any Anthropic-operated or third-party analytics endpoint. Your data stays within your Claude Code session and your local filesystem.
+The skill uses `WebFetch` and `Bash` (via `curl`) to fetch the URLs you provide, and the brand mention scanner checks publicly accessible platforms (YouTube, Reddit, Wikipedia, LinkedIn, and others) for brand signals. No audit data is sent to any Anthropic-operated or third-party analytics endpoint. Your data stays within your Antigravity session and your local filesystem.

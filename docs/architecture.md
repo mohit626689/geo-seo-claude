@@ -62,7 +62,7 @@ When you run `/geo audit https://example.com`:
 
 ### Data Storage
 
-The CRM and reporting skills (`/geo prospect`, `/geo proposal`, `/geo compare`) store runtime data outside the Claude Code directory:
+The CRM and reporting skills (`/geo prospect`, `/geo proposal`, `/geo compare`) store runtime data outside the Antigravity directory:
 
 ```
 ~/.geo-prospects/

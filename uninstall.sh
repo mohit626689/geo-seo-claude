@@ -2,12 +2,12 @@
 set -euo pipefail
 
 # ============================================================
-# GEO-SEO Claude Code Skill Uninstaller
+# GEO-SEO Antigravity Skill Uninstaller
 # ============================================================
 
-CLAUDE_DIR="${HOME}/.claude"
-SKILLS_DIR="${CLAUDE_DIR}/skills"
-AGENTS_DIR="${CLAUDE_DIR}/agents"
+AGY_DIR="${HOME}/.gemini/config"
+SKILLS_DIR="${AGY_DIR}/skills"
+AGENTS_DIR="${AGY_DIR}/agents"
 
 # Detect if running via curl pipe (no interactive input available)
 INTERACTIVE=true
@@ -25,7 +25,7 @@ NC='\033[0m'
 shopt -s nullglob
 
 echo ""
-echo -e "${YELLOW}GEO-SEO Claude Code Skill Uninstaller${NC}"
+echo -e "${YELLOW}GEO-SEO Antigravity Skill Uninstaller${NC}"
 echo ""
 echo "This will remove the following:"
 echo ""

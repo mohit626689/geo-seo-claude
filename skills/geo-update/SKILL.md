@@ -19,18 +19,18 @@ Updates the locally installed GEO-SEO skills, agents, scripts, and schema templa
 
 ### Step 1: Determine Installed Location
 
-The GEO-SEO toolkit installs to these locations under `~/.claude/`:
+The GEO-SEO toolkit installs to these locations under `~/.gemini/config/`:
 
 | Component | Install Path |
 |-----------|-------------|
-| Main skill | `~/.claude/skills/geo/` |
-| Sub-skills | `~/.claude/skills/geo-*/` |
-| Agents | `~/.claude/agents/geo-*.md` |
-| Scripts | `~/.claude/skills/geo/scripts/` |
-| Schema templates | `~/.claude/skills/geo/schema/` |
-| Hooks | `~/.claude/skills/geo/hooks/` |
+| Main skill | `~/.gemini/config/skills/geo/` |
+| Sub-skills | `~/.gemini/config/skills/geo-*/` |
+| Agents | `~/.gemini/config/agents/geo-*.md` |
+| Scripts | `~/.gemini/config/skills/geo/scripts/` |
+| Schema templates | `~/.gemini/config/skills/geo/schema/` |
+| Hooks | `~/.gemini/config/skills/geo/hooks/` |
 
-Verify the installation exists by checking for `~/.claude/skills/geo/SKILL.md`. If it does not exist, inform the user that GEO-SEO is not installed and suggest running the installer instead.
+Verify the installation exists by checking for `~/.gemini/config/skills/geo/SKILL.md`. If it does not exist, inform the user that GEO-SEO is not installed and suggest running the installer instead.
 
 ### Step 2: Clone Latest from Upstream
 
@@ -57,40 +57,40 @@ Before copying files, generate a diff summary so the user knows what will change
 Copy files from the cloned repo over the installed locations:
 
 ```bash
-CLAUDE_DIR="${HOME}/.claude"
+AGY_DIR="${HOME}/.gemini/config"
 SOURCE_DIR="$TEMP_DIR/repo"
 
 # Main skill
-cp -r "$SOURCE_DIR/geo/"* "$CLAUDE_DIR/skills/geo/"
+cp -r "$SOURCE_DIR/geo/"* "$AGY_DIR/skills/geo/"
 
 # Sub-skills
 for skill_dir in "$SOURCE_DIR/skills"/*/; do
     skill_name=$(basename "$skill_dir")
-    mkdir -p "$CLAUDE_DIR/skills/${skill_name}"
-    cp -r "$skill_dir"* "$CLAUDE_DIR/skills/${skill_name}/"
+    mkdir -p "$AGY_DIR/skills/${skill_name}"
+    cp -r "$skill_dir"* "$AGY_DIR/skills/${skill_name}/"
 done
 
 # Agents
 for agent_file in "$SOURCE_DIR/agents/"*.md; do
-    cp "$agent_file" "$CLAUDE_DIR/agents/"
+    cp "$agent_file" "$AGY_DIR/agents/"
 done
 
 # Scripts
 if [ -d "$SOURCE_DIR/scripts" ]; then
-    cp -r "$SOURCE_DIR/scripts/"* "$CLAUDE_DIR/skills/geo/scripts/"
-    chmod +x "$CLAUDE_DIR/skills/geo/scripts/"*.py 2>/dev/null || true
+    cp -r "$SOURCE_DIR/scripts/"* "$AGY_DIR/skills/geo/scripts/"
+    chmod +x "$AGY_DIR/skills/geo/scripts/"*.py 2>/dev/null || true
 fi
 
 # Schema templates
 if [ -d "$SOURCE_DIR/schema" ]; then
-    cp -r "$SOURCE_DIR/schema/"* "$CLAUDE_DIR/skills/geo/schema/"
+    cp -r "$SOURCE_DIR/schema/"* "$AGY_DIR/skills/geo/schema/"
 fi
 
 # Hooks
 if [ -d "$SOURCE_DIR/hooks" ] && [ "$(ls -A "$SOURCE_DIR/hooks" 2>/dev/null)" ]; then
-    mkdir -p "$CLAUDE_DIR/skills/geo/hooks"
-    cp -r "$SOURCE_DIR/hooks/"* "$CLAUDE_DIR/skills/geo/hooks/"
-    chmod +x "$CLAUDE_DIR/skills/geo/hooks/"* 2>/dev/null || true
+    mkdir -p "$AGY_DIR/skills/geo/hooks"
+    cp -r "$SOURCE_DIR/hooks/"* "$AGY_DIR/skills/geo/hooks/"
+    chmod +x "$AGY_DIR/skills/geo/hooks/"* 2>/dev/null || true
 fi
 ```
 
@@ -132,6 +132,6 @@ If there were removed files upstream, list them and suggest the user review whet
 ## Important Notes
 
 - **Never delete locally installed files** that no longer exist upstream. The user may have customised them. List them and let the user decide.
-- **Never modify `~/.claude/settings.json` or `~/.claude/settings.local.json`** — these are user configuration files, not part of the GEO-SEO toolkit.
+- **Never modify `~/.gemini/config/settings.json` or `~/.gemini/config/settings.local.json`** — these are user configuration files, not part of the GEO-SEO toolkit.
 - **If already up to date** (no diff), report that and skip the copy step.
-- **Restart notice:** Remind the user that skill changes take effect in new Claude Code sessions. They should restart their session to use the updated skills.
+- **Restart notice:** Remind the user that skill changes take effect in new Antigravity sessions. They should restart their session to use the updated skills.

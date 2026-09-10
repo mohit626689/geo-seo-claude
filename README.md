@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/banner.svg" alt="GEO-SEO Claude Code Skill" width="900"/>
+  <img src="assets/banner.svg" alt="GEO-SEO Antigravity Skill" width="900"/>
 </p>
 
 <p align="center">
@@ -72,7 +72,7 @@ cd geo-seo-claude
 ### Requirements
 
 - Python 3.8+ (on Debian/Ubuntu also `python3-venv`)
-- Claude Code CLI
+- Antigravity CLI
 - Git
 - Optional: [`uv`](https://docs.astral.sh/uv/) — if present, the installer uses it for a faster dependency install
 - Optional: Playwright (for screenshots)
@@ -80,7 +80,7 @@ cd geo-seo-claude
 ### Isolated install
 
 Python dependencies are installed into a dedicated virtual environment at
-`~/.claude/skills/geo/.venv/`. Your system Python is **not** touched, and
+`~/.gemini/config/skills/geo/.venv/`. Your system Python is **not** touched, and
 uninstalling the skill removes the venv together with the rest of the files.
 
 Skill and agent files reference that venv directly, so the tool works
@@ -90,7 +90,7 @@ regardless of what `python3` resolves to on your `PATH`.
 
 ## Commands
 
-Open Claude Code and use these commands:
+Open Antigravity and use these commands:
 
 | Command | What It Does |
 |---------|-------------|
@@ -159,7 +159,7 @@ geo-seo-claude/
 
 ## Data Storage
 
-The CRM and reporting skills (`/geo prospect`, `/geo proposal`, `/geo compare`) store runtime data outside the Claude Code directory:
+The CRM and reporting skills (`/geo prospect`, `/geo proposal`, `/geo compare`) store runtime data outside the Antigravity directory:
 
 ```
 ~/.geo-prospects/
@@ -244,7 +244,7 @@ Generates professional GEO reports in markdown or PDF format. PDF reports includ
 
 Or manually:
 ```bash
-rm -rf ~/.claude/skills/geo ~/.claude/skills/geo-* ~/.claude/agents/geo-*.md
+rm -rf ~/.gemini/config/skills/geo ~/.gemini/config/skills/geo-* ~/.gemini/config/agents/geo-*.md
 ```
 
 ---

@@ -145,8 +145,8 @@
   <!-- Subtitle -->
   <text x="40" y="250" font-family="'Courier New', monospace" font-size="15" fill="#8892b0" letter-spacing="0.5">AI-Powered GEO Analysis</text>
 
-  <!-- "for Claude Code" line -->
-  <text x="40" y="272" font-family="'Courier New', monospace" font-size="13" fill="#636e72" letter-spacing="0.5">for Claude Code</text>
+  <!-- "for Antigravity" line -->
+  <text x="40" y="272" font-family="'Courier New', monospace" font-size="13" fill="#636e72" letter-spacing="0.5">for Antigravity</text>
 
   <!-- Vertical accent line separating left and right -->
   <rect x="480" y="40" width="2" height="230" fill="#0f3460" opacity="0.4" rx="1"/>

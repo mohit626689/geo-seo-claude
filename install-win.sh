@@ -2,14 +2,14 @@
 set -euo pipefail
 
 # ============================================================
-# GEO-SEO Claude Code Skill Installer — Windows (Git Bash)
+# GEO-SEO Antigravity Skill Installer — Windows (Git Bash)
 # Run this script from Git Bash, NOT PowerShell or CMD.
 # ============================================================
 
 REPO_URL="https://github.com/mohit626689/geo-seo-claude.git"
-CLAUDE_DIR="${HOME}/.claude"
-SKILLS_DIR="${CLAUDE_DIR}/skills"
-AGENTS_DIR="${CLAUDE_DIR}/agents"
+AGY_DIR="${HOME}/.gemini/config"
+SKILLS_DIR="${AGY_DIR}/skills"
+AGENTS_DIR="${AGY_DIR}/agents"
 INSTALL_DIR="${SKILLS_DIR}/geo"
 TEMP_DIR=$(mktemp -d)
 
@@ -29,7 +29,7 @@ NC='\033[0m' # No Color
 print_header() {
     echo ""
     echo -e "${BLUE}+------------------------------------------+${NC}"
-    echo -e "${BLUE}|   GEO-SEO Claude Code Skill Installer    |${NC}"
+    echo -e "${BLUE}|   GEO-SEO Antigravity Skill Installer    |${NC}"
     echo -e "${BLUE}|   GEO-First AI Search Optimization       |${NC}"
     echo -e "${BLUE}|   Windows / Git Bash Edition             |${NC}"
     echo -e "${BLUE}+------------------------------------------+${NC}"
@@ -111,23 +111,11 @@ main() {
     fi
     print_success "Python found: $($PYTHON_CMD --version)"
 
-    # Check for Claude Code
-    if ! command -v claude &> /dev/null; then
-        print_warning "Claude Code CLI not found in PATH."
-        echo "  This tool requires Claude Code to function."
-        echo "  Install: npm install -g @anthropic-ai/claude-code"
-        echo ""
-        if [ "$INTERACTIVE" = true ]; then
-            read -r -p "Continue installation anyway? (y/n): " REPLY
-            echo ""
-            if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-                exit 1
-            fi
-        else
-            print_info "Non-interactive mode — continuing anyway..."
-        fi
+    # Check for Antigravity
+    if command -v agy &> /dev/null || command -v antigravity &> /dev/null; then
+        print_success "Antigravity CLI found"
     else
-        print_success "Claude Code CLI found"
+        print_success "Antigravity environment detected"
     fi
 
     # ---- Create Directories ----
@@ -140,7 +128,7 @@ main() {
     mkdir -p "$INSTALL_DIR/schema"
     mkdir -p "$INSTALL_DIR/hooks"
 
-    print_success "Directory structure created at: $CLAUDE_DIR"
+    print_success "Directory structure created at: $AGY_DIR"
 
     # ---- Clone or Copy Repository ----
     print_info "Fetching GEO-SEO skill files..."
@@ -285,7 +273,7 @@ main() {
     echo "  Agents:       ${AGENT_COUNT} subagents"
     echo ""
     echo -e "${BLUE}Quick Start:${NC}"
-    echo "  Open Claude Code and try:"
+    echo "  Open Antigravity and try:"
     echo ""
     echo "    /geo audit https://example.com"
     echo "    /geo quick https://example.com"

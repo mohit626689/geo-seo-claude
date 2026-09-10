@@ -45,7 +45,7 @@ def check_youtube_presence(brand_name: str) -> dict:
     }
 
     # Note: Actual YouTube API would be used in production
-    # This provides the framework for Claude Code to use WebFetch
+    # This provides the framework for Antigravity to use WebFetch
     result["check_instructions"] = [
         f"Search YouTube for '{brand_name}' and check:",
         "1. Does the brand have an official YouTube channel?",
