@@ -19,6 +19,21 @@ allowed-tools: Read, Grep, Glob, Bash, WebFetch, Write
 
 ---
 
+
+---
+
+## ⚡ Slash Command Automation (Zero Manual Commands Required)
+
+When the user enters any slash command below, **DO NOT prompt them with shell commands to run**.
+The assistant executes the underlying tool automatically in the background:
+
+- `/geo audit <url> [client_name]`: Runs `audit_orchestrator.py` -> Semrush Technical Audit + GEO AI Citability + 4-Page PDF + Client folder + `AUDIT-INDEX.md` + Desktop copy.
+- `/geo report-pdf <url> [client_name]`: Runs `audit_orchestrator.py` to generate the executive PDF report and Desktop mirror.
+- `/geo technical <url>`: Runs `seo_auditor.py` -> Semrush-grade Site Health %, Errors, Warnings, Notices.
+- `/geo quick <url>`: Runs fast technical health + citability snapshot.
+
+---
+
 ## Quick Reference
 
 | Command | What It Does |

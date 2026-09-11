@@ -1,6 +1,6 @@
 ---
 name: geo-audit
-description: Full website GEO+SEO audit with parallel subagent delegation. Orchestrates a comprehensive Generative Engine Optimization audit across AI citability, platform analysis, technical infrastructure, content quality, and schema markup. Produces a composite GEO Score (0-100) with prioritized action plan.
+description: Full website GEO+SEO audit with Dual-Engine scoring (GEO AI Citability + Semrush-grade Technical Health). Automatically generates publication-ready 4-page PDF, updates client folder, and registers in AUDIT-INDEX.md.
 allowed-tools:
   - Read
   - Grep
@@ -12,13 +12,26 @@ allowed-tools:
 
 # GEO Audit Orchestration Skill
 
-## Purpose
+## ⚡ Execution Rule for AI Assistant (CRITICAL)
 
-This skill performs a comprehensive Generative Engine Optimization (GEO) audit of any website. GEO is the practice of optimizing web content so that AI systems (ChatGPT, Claude, Perplexity, Gemini, etc.) can discover, understand, cite, and recommend it. This audit measures how well a site performs across all GEO dimensions and produces an actionable improvement plan.
+When the user invokes `/geo audit <url> [client_name]` or `/geo-audit <url> [client_name]`:
+**NEVER** ask the user to run raw Python or bash commands in the chat.
+YOU MUST automatically execute the Dual-Engine Audit Orchestrator using your command execution tool:
 
-## Key Insight
+```bash
+/Users/shivpratap/.gemini/config/skills/geo/.venv/bin/python3 /Users/shivpratap/.gemini/config/skills/geo/scripts/audit_orchestrator.py "<url>" "<client_name>"
+```
+*(If client_name is not provided by user, infer a clean brand name from the URL or site title).*
 
-Traditional SEO optimizes for search engine rankings. GEO optimizes for AI citation and recommendation. Sites that score high on GEO metrics see 30-115% more visibility in AI-generated responses (Georgia Tech / Princeton / IIT Delhi 2024 study). The two disciplines overlap but have distinct requirements.
+This automatically handles the entire end-to-end audit:
+1. **Semrush-Alternative Engine (`seo_auditor.py`)**: Checks HTTP status, SSL, security headers, metadata, headings, alt tags, text/HTML ratio, and computes Semrush-grade Site Health % (Errors, Warnings, Notices).
+2. **GEO AI Engine**: Scores citability, llms.txt, AI bot access (GPTBot, ClaudeBot, PerplexityBot), and JSON-LD structured data.
+3. **Dedicated Client Folder**: Saves report files inside `Audits/<domain>/`.
+4. **Publication-Grade 4-Page PDF**: Renders `Audits/<domain>/GEO-Report-<domain>-<date>.pdf`.
+5. **Desktop Mirroring**: Immediately copies the PDF to `/Users/shivpratap/Desktop/GEO-Report-<domain>-<date>.pdf` for one-click drag & drop.
+6. **Master Registry**: Logs the client, date, score, health %, and link in `Audits/AUDIT-INDEX.md` and `Audits/audit-index.json`.
+
+After the command completes, present a crisp executive scorecard to the user in chat with direct links to the generated PDF and Desktop copy.
 
 ---
 

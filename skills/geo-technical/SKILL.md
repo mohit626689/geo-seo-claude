@@ -9,6 +9,19 @@ allowed-tools: Read, Grep, Glob, Bash, WebFetch, Write
 
 # GEO Technical SEO Audit
 
+## ⚡ Execution Rule for AI Assistant (CRITICAL)
+
+When the user invokes `/geo technical <url>` or `/geo-technical <url>`:
+**NEVER** ask the user to run raw commands in chat.
+YOU MUST automatically execute the built-in free Semrush-alternative technical engine:
+
+```bash
+/Users/shivpratap/.gemini/config/skills/geo/.venv/bin/python3 /Users/shivpratap/.gemini/config/skills/geo/scripts/seo_auditor.py "<url>"
+```
+And immediately present the Semrush-grade Site Health Score (0-100%), Critical Errors, Warnings, and Notices to the user.
+
+---
+
 ## Purpose
 
 Technical SEO forms the foundation of both traditional search visibility and AI search citation. A technically broken site cannot be crawled, indexed, or cited by any platform. This skill audits 8 categories of technical health with specific attention to GEO requirements — most critically, **server-side rendering** (AI crawlers do not execute JavaScript) and **AI crawler access** (many sites inadvertently block AI crawlers in robots.txt).
