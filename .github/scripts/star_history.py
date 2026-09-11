@@ -110,10 +110,12 @@ def render_svg(dates, fg, grid, accent, fill_opacity):
 
 def main():
     if not TOKEN:
-        sys.exit("GITHUB_TOKEN is not set")
+        print("GITHUB_TOKEN is not set; skipping star history update.")
+        sys.exit(0)
     dates = fetch_star_dates()
     if not dates:
-        sys.exit("No stargazer data returned")
+        print("No stargazer data returned yet; skipping chart update.")
+        sys.exit(0)
     os.makedirs(OUT_DIR, exist_ok=True)
     variants = {
         "star-history.svg": ("#24292f", "#d0d7de", "#e3a008", "0.12"),
